@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: log-config
+  namespace: knu-chat-namespace
+data:
+  spring.data.mongodb.uri: "mongodb+srv://wgwjh05169:h05169@knuchatcluster.xevuelh.mongodb.net/logDB?retryWrites=true&w=majority"
+  spring.kafka.bootstrap-servers: "kafka-service:9092"
+  spring.kafka.consumer.group-id: "knuchat"
+  

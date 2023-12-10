@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-deployment
+  namespace: knu-chat-namespace
+  labels:
+    app: log
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log
+  template:
+    metadata:
+      name: log
+      labels:
+        app: log
+    spec:
+      containers:
+        - name: log
+          image: 508947823287.dkr.ecr.ap-northeast-2.amazonaws.com/log:latest
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: log-config
+      restartPolicy: Always
