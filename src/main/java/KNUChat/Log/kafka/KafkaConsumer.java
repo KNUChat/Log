@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class Consumer {
+public class KafkaConsumer {
     @Autowired
     private final LogService logService;
 
-    @KafkaListener(topics = "log")
+    @KafkaListener(topics = "log", errorHandler = "kafkaErrorHandler")
     public void getKafkaMessage(Message message){
         logService.saveLog(message);
     }
